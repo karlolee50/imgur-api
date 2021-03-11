@@ -3,6 +3,7 @@
         <a href="/" class="active item">
             Home
         </a>
+        {{ isLoggedIn }}
         <div class="right menu">
             <a href="#" class="ui item" @click="login">
             Login
@@ -12,11 +13,17 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: 'AppHeader',
-    methods: mapActions(['login'])
+
+    computed: mapGetters(['isLoggedIn']),
+
+    methods: {
+        ...mapActions(['login', 'test'])
+    },
+
 };
 </script>
 
